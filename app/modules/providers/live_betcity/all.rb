@@ -122,26 +122,25 @@ module Providers
 
               # периоды
               # search("table#dt")
-              #lines_nodes.search('./td/table[@id="dt"]').each do |periods|
-              #  # строки таблицы
-              #  columns_name = []
-              #  periods.search("tr").each_with_index do |line, number_line|
-              #    case number_line
-              #      when 0 # title table
-              #        next
-              #      when 1 # column name
-              #        columns_name = line.search("td.tdh")
-              #      else # other line
-              #        period_totals = line.search("td")
-              #        puts get_totals_over_period(columns_name, period_totals)
-              #    end
-              #  end
-              #end
+              lines_nodes.search('./td/table[@id="dt"]').each do |periods|
+                # строки таблицы
+                columns_name = []
+                periods.search("tr").each_with_index do |line, number_line|
+                  case number_line
+                    when 0 # title table
+                      next
+                    when 1 # column name
+                      columns_name = line.search("td.tdh")
+                    else # other line
+                      period_totals = line.search("td")
+                      totals += get_totals_over_period(columns_name, period_totals) # исходны для периодов
+                  end
+                end
+              end
 
               result[sport][league][full_name] = totals
 
             end
-
           end
 
           puts result
