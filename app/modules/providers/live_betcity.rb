@@ -147,6 +147,7 @@ module Providers
 
         totals << [period, home_team_or_first_player_wins, nil, period_line["1"]] if period_line["1"].present?
         totals << [period, away_team_or_second_player_wins, nil, period_line["2"]] if period_line["2"].present?
+        totals << [period, "X", nil, period_line["X"]] if period_line["X"].present?
         totals << [period, "1X", nil, period_line["1X"]] if period_line["1X"].present?
         totals << [period, "12", nil, period_line["12"]] if period_line["12"].present?
         totals << [period, "X2", nil, period_line["X2"]] if period_line["X2"].present?
